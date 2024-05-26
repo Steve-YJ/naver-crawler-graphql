@@ -21,15 +21,18 @@ Dockerfile은 Python 3.9 이미지를 기반으로, 필요한 Python 패키지�
     sudo apt-get update
     
     # Docker 설치를 위해 필요한 패키지(ca-certificates, curl)를 설치합니다.
-    sudo apt-get install ca-certificates curl 
-    sudo install -m 0755 -d /etc/apt/keyrings # APT 키링을 저장할 디렉토리를 생성합니다.
-    sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc # Docker의 공식 GPG 키를 다운로드하여 /etc/apt/keyrings/docker.asc에 저장합니다.
-    sudo chmod a+r /etc/apt/keyrings/docker.asc # 다운로드된 GPG 키 파일에 모든 사용자가 읽을 수 있는 권한을 부여합니다.
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null # Docker의 APT 리포지토리를 시스템의 APT 소스 리스트에 추가합니다.
+    sudo apt-get install ca-certificates curl
+    # APT 키링을 저장할 디렉토리를 생성합니다.
+    sudo install -m 0755 -d /etc/apt/keyrings
+    # Docker의 공식 GPG 키를 다운로드하여 /etc/apt/keyrings/docker.asc에 저장합니다.
+    sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+    # 다운로드된 GPG 키 파일에 모든 사용자가 읽을 수 있는 권한을 부여합니다.
+    sudo chmod a+r /etc/apt/keyrings/docker.asc
+    # Docker의 APT 리포지토리를 시스템의 APT 소스 리스트에 추가합니다.
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     
     # 새로운 Docker 소스를 추가한 후 시스템의 패키지 목록을 다시 업데이트합니다.
     sudo apt-get update
-    
     # Docker가 성공적으로 설치되었는지 확인하기 위해 hello-world 이미지를 실행합니다.
     sudo docker run hello-world
     ```
