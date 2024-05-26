@@ -53,3 +53,6 @@ Dockerfile은 Python 3.9 이미지를 기반으로, 필요한 Python 패키지�
 
 ## 안전한 인증
 key.json은 Google Cloud 인증에 사용되며, 보안을 위해 버전 관리에서 제외되어야 합니다. .gitignore 파일에 해당 파일을 포함시켜 보안을 유지하세요.
+
+## 이슈
+* [ ] 다른 환경에서 실행시 crawler.py 스크립트 내 bucker_name을 변경해줘야함. (* 기존 버킷에 권한이 없을 경우 데이터 삽입 불가)
